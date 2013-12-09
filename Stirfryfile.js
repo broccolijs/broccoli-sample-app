@@ -1,12 +1,12 @@
 module.exports = function (broccoli) {
-  var mainPackage = broccoli.helpers.loadBroccoliPackage('.') // improve API
+  var mainPackage = broccoli.readers.Package.fromDirectory('.') // improve API
   var bowerPackages = broccoli.readers.bowerPackages()
 
   var packages = [mainPackage].concat(bowerPackages)
   var packageReader = new broccoli.readers.PackageReader(packages)
 
   var compilerCollection = new broccoli.transformers.compilers.CompilerCollection({
-    staticFiles: ['index.html'],
+    staticFiles: ['index.html'], // this should be a map
     compilers: [
       new broccoli.transformers.compilers.ES6ConcatenatorCompiler({
         loaderFile: 'almond.js', // make this a default
