@@ -22,7 +22,9 @@ module.exports = function (factory, broccoli) {
 
   var publicPkg = factory.makePackage()
     .map({
-      'public': '/' //'/appkit-public'
+      // The public files get a completely separate namespace so we don't
+      // accidentally match them with compiler glob patterns
+      'public': '/appkit-public'
     })
 
   return [appPkg, libPkg, publicPkg]
