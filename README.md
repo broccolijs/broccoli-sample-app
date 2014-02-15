@@ -1,8 +1,10 @@
-# Broccoli
-
-Note: This is out of date at the moment. Try [joliss/ember-app-kit#broccoli](https://github.com/joliss/ember-app-kit/tree/broccoli).
+# Broccoli Sample App
 
 Sample Ember app for [Broccoli](https://github.com/joliss/broccoli).
+
+See [Broccolifile.js](/Broccolifile.js) for the build definition.
+
+To start the server, run:
 
 ```
 npm install -g bower
