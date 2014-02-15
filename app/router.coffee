@@ -1,9 +1,7 @@
-Router = Ember.Router.extend() # ensure we don't share routes between all Router instances
+Router = Ember.Router.extend()
 
 Router.map ->
-  @route('component-test')
-  @route('helper-test')
-  # @resource 'posts', ->
-  #   @route('new')
+  this.route('component-test');
+  this.route('helper-test');
 
-`export default Router;`
+`export default Router`
