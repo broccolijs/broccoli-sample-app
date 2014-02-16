@@ -41,7 +41,7 @@ module.exports = function (broccoli) {
 
   var appAndDependencies = new broccoli.MergedTree(sourceTrees)
 
-  applicationJs = compileES6(appAndDependencies, {
+  var applicationJs = compileES6(appAndDependencies, {
     loaderFile: 'loader.js',
     ignoredModules: [
       'resolver'
