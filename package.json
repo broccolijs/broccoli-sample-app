@@ -10,7 +10,7 @@
     "url": "https://github.com/joliss/broccoli-sample-app"
   },
   "dependencies": {
-    "broccoli": "~0.1.0",
+    "broccoli": "~0.2.0",
     "broccoli-env": "0.0.1",
     "broccoli-static-compiler": "0.0.5",
     "broccoli-uglify-js": "0.0.4",
