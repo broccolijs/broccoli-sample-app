@@ -1,4 +1,4 @@
-import Resolver from 'resolver';
+import Resolver from 'ember/resolver';
 
 function isolatedContainer(fullNames) {
   var container = new Ember.Container();
