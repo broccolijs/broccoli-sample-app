@@ -44,7 +44,6 @@ module.exports = function (broccoli) {
   var applicationJs = compileES6(appAndDependencies, {
     loaderFile: 'loader.js',
     ignoredModules: [
-      'resolver',
       'ember/resolver'
     ],
     inputFiles: [
