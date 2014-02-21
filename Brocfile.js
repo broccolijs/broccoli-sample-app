@@ -44,7 +44,8 @@ module.exports = function (broccoli) {
   var applicationJs = compileES6(appAndDependencies, {
     loaderFile: 'loader.js',
     ignoredModules: [
-      'resolver'
+      'resolver',
+      'ember/resolver'
     ],
     inputFiles: [
       'appkit/**/*.js'
