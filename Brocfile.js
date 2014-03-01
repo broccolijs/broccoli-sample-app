@@ -3,6 +3,7 @@ module.exports = function (broccoli) {
   var filterTemplates = require('broccoli-template')
   var uglifyJavaScript = require('broccoli-uglify-js')
   var compileES6 = require('broccoli-es6-concatenator')
+  var compileSass = require('broccoli-sass')
   var pickFiles = require('broccoli-static-compiler')
   var env = require('broccoli-env').getEnv()
 
@@ -24,6 +25,13 @@ module.exports = function (broccoli) {
   })
   app = preprocess(app)
 
+  var styles = broccoli.makeTree('styles')
+  styles = pickFiles(styles, {
+    srcDir: '/',
+    destDir: 'appkit'
+  })
+  styles = preprocess(styles)
+
   var tests = broccoli.makeTree('tests')
   tests = pickFiles(tests, {
     srcDir: '/',
@@ -33,7 +41,7 @@ module.exports = function (broccoli) {
 
   var vendor = broccoli.makeTree('vendor')
 
-  var sourceTrees = [app, vendor]
+  var sourceTrees = [app, styles, vendor]
   if (env !== 'production') {
     sourceTrees.push(tests)
   }
@@ -41,7 +49,7 @@ module.exports = function (broccoli) {
 
   var appAndDependencies = new broccoli.MergedTree(sourceTrees)
 
-  var applicationJs = compileES6(appAndDependencies, {
+  var appJs = compileES6(appAndDependencies, {
     loaderFile: 'loader.js',
     ignoredModules: [
       'ember/resolver'
@@ -60,8 +68,10 @@ module.exports = function (broccoli) {
     outputFile: '/assets/app.js'
   })
 
+  var appCss = compileSass(sourceTrees, 'appkit/app.scss', 'assets/app.css')
+
   if (env === 'production') {
-    applicationJs = uglifyJavaScript(applicationJs, {
+    appJs = uglifyJavaScript(appJs, {
       // mangle: false,
       // compress: false
     })
@@ -69,5 +79,5 @@ module.exports = function (broccoli) {
 
   var publicFiles = broccoli.makeTree('public')
 
-  return [applicationJs, publicFiles]
+  return [appJs, appCss, publicFiles]
 }
