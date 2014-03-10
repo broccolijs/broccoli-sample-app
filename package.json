@@ -9,7 +9,11 @@
     "type": "git",
     "url": "https://github.com/joliss/broccoli-sample-app"
   },
+  "scripts": {
+    "postinstall": "node_modules/.bin/bower install"
+  },
   "devDependencies": {
+    "bower": "^1.2.8",
     "broccoli": "~0.2.0",
     "broccoli-env": "0.0.1",
     "broccoli-static-compiler": "^0.1.0",
