@@ -6,7 +6,7 @@
     "qunit": "~1.12.0",
     "ember": "~1.2.0",
     "ember-data": "~1.0.0-beta.3",
-    "ember-resolver": "git://github.com/stefanpenner/ember-jj-abrams-resolver.git#master",
+    "ember-resolver": "git://github.com/stefanpenner/ember-jj-abrams-resolver.git#9805033c178e7f857f801359664adb599444b430",
     "ic-ajax": "~0.2",
     "ember-testing-httpRespond": "~0.1.1"
   }
