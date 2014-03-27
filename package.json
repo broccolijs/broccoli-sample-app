@@ -14,7 +14,7 @@
   },
   "devDependencies": {
     "bower": "^1.2.8",
-    "broccoli": "~0.2.0",
+    "broccoli": "^0.4.2",
     "broccoli-env": "0.0.1",
     "broccoli-static-compiler": "^0.1.0",
     "broccoli-uglify-js": "^0.1.0",
