@@ -18,28 +18,28 @@ module.exports = function (broccoli) {
     return tree
   }
 
-  var app = broccoli.makeTree('app')
+  var app = 'app'
   app = pickFiles(app, {
     srcDir: '/',
     destDir: 'appkit' // move under appkit namespace
   })
   app = preprocess(app)
 
-  var styles = broccoli.makeTree('styles')
+  var styles = 'styles'
   styles = pickFiles(styles, {
     srcDir: '/',
     destDir: 'appkit'
   })
   styles = preprocess(styles)
 
-  var tests = broccoli.makeTree('tests')
+  var tests = 'tests'
   tests = pickFiles(tests, {
     srcDir: '/',
     destDir: 'appkit/tests'
   })
   tests = preprocess(tests)
 
-  var vendor = broccoli.makeTree('vendor')
+  var vendor = 'vendor'
 
   var sourceTrees = [app, styles, vendor]
   if (env !== 'production') {
@@ -77,7 +77,7 @@ module.exports = function (broccoli) {
     })
   }
 
-  var publicFiles = broccoli.makeTree('public')
+  var publicFiles = 'public'
 
   return [appJs, appCss, publicFiles]
 }
