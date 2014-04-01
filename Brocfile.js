@@ -5,6 +5,7 @@ module.exports = function (broccoli) {
   var compileES6 = require('broccoli-es6-concatenator')
   var compileSass = require('broccoli-sass')
   var pickFiles = require('broccoli-static-compiler')
+  var mergeTrees = require('broccoli-merge-trees')
   var env = require('broccoli-env').getEnv()
 
   function preprocess (tree) {
@@ -47,7 +48,7 @@ module.exports = function (broccoli) {
   }
   sourceTrees = sourceTrees.concat(broccoli.bowerTrees())
 
-  var appAndDependencies = new broccoli.MergedTree(sourceTrees)
+  var appAndDependencies = new mergeTrees(sourceTrees, { overwrite: true })
 
   var appJs = compileES6(appAndDependencies, {
     loaderFile: 'loader.js',
@@ -79,5 +80,5 @@ module.exports = function (broccoli) {
 
   var publicFiles = 'public'
 
-  return [appJs, appCss, publicFiles]
+  return mergeTrees([appJs, appCss, publicFiles])
 }
