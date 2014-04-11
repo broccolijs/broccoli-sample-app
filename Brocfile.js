@@ -6,6 +6,7 @@ module.exports = function (broccoli) {
   var compileSass = require('broccoli-sass')
   var pickFiles = require('broccoli-static-compiler')
   var mergeTrees = require('broccoli-merge-trees')
+  var findBowerTrees = require('broccoli-bower')
   var env = require('broccoli-env').getEnv()
 
   function preprocess (tree) {
@@ -46,7 +47,7 @@ module.exports = function (broccoli) {
   if (env !== 'production') {
     sourceTrees.push(tests)
   }
-  sourceTrees = sourceTrees.concat(broccoli.bowerTrees())
+  sourceTrees = sourceTrees.concat(findBowerTrees())
 
   var appAndDependencies = new mergeTrees(sourceTrees, { overwrite: true })
 
