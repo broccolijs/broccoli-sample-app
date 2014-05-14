@@ -6,6 +6,7 @@ var compileSass = require('broccoli-sass')
 var pickFiles = require('broccoli-static-compiler')
 var mergeTrees = require('broccoli-merge-trees')
 var findBowerTrees = require('broccoli-bower')
+var watchedDir = require('broccoli-watched')
 var env = require('broccoli-env').getEnv()
 
 function preprocess (tree) {
@@ -19,28 +20,28 @@ function preprocess (tree) {
   return tree
 }
 
-var app = 'app'
+var app = watchedDir('app')
 app = pickFiles(app, {
   srcDir: '/',
   destDir: 'appkit' // move under appkit namespace
 })
 app = preprocess(app)
 
-var styles = 'styles'
+var styles = watchedDir('styles')
 styles = pickFiles(styles, {
   srcDir: '/',
   destDir: 'appkit'
 })
 styles = preprocess(styles)
 
-var tests = 'tests'
+var tests = watchedDir('tests')
 tests = pickFiles(tests, {
   srcDir: '/',
   destDir: 'appkit/tests'
 })
 tests = preprocess(tests)
 
-var vendor = 'vendor'
+var vendor = watchedDir('vendor')
 
 var sourceTrees = [app, styles, vendor]
 if (env !== 'production') {
@@ -78,6 +79,6 @@ if (env === 'production') {
   })
 }
 
-var publicFiles = 'public'
+var publicFiles = watchedDir('public')
 
 module.exports = mergeTrees([appJs, appCss, publicFiles])
