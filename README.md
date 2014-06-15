@@ -8,6 +8,7 @@ To start the server, run:
 
 ```
 npm install
+bower install
 
 npm install -g broccoli-cli
 broccoli serve
