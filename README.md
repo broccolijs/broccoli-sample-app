@@ -1,6 +1,6 @@
 # Broccoli Sample App
 
-Sample Ember app for [Broccoli](https://github.com/joliss/broccoli).
+Sample Ember app for [Broccoli](https://github.com/broccolijs/broccoli).
 
 See [Brocfile.js](/Brocfile.js) for the build definition.
 
