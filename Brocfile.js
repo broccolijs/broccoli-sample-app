@@ -8,6 +8,12 @@ var mergeTrees = require('broccoli-merge-trees')
 var findBowerTrees = require('broccoli-bower')
 var env = require('broccoli-env').getEnv()
 
+
+function watchedTree (s) {
+  // return s
+  return { sourceDirectory: s, watched: true }
+}
+
 function preprocess (tree) {
   tree = filterTemplates(tree, {
     extensions: ['hbs', 'handlebars'],
@@ -19,28 +25,28 @@ function preprocess (tree) {
   return tree
 }
 
-var app = 'app'
+var app = watchedTree('app')
 app = pickFiles(app, {
   srcDir: '/',
   destDir: 'appkit' // move under appkit namespace
 })
 app = preprocess(app)
 
-var styles = 'styles'
+var styles = watchedTree('styles')
 styles = pickFiles(styles, {
   srcDir: '/',
   destDir: 'appkit'
 })
 styles = preprocess(styles)
 
-var tests = 'tests'
+var tests = watchedTree('tests')
 tests = pickFiles(tests, {
   srcDir: '/',
   destDir: 'appkit/tests'
 })
 tests = preprocess(tests)
 
-var vendor = 'vendor'
+var vendor = watchedTree('vendor')
 
 var sourceTrees = [app, styles, vendor]
 if (env !== 'production') {
@@ -78,6 +84,6 @@ if (env === 'production') {
   })
 }
 
-var publicFiles = 'public'
+var publicFiles = watchedTree('public')
 
 module.exports = mergeTrees([appJs, appCss, publicFiles])
