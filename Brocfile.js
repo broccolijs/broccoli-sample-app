@@ -101,6 +101,6 @@ if (env === 'production') {
 // create tree for public folder (no filters needed here)
 var publicFiles = 'public'
 
-// merge js, css and public file trees, and export the
+// merge js, css and public file trees, and export them
 module.exports = mergeTrees([appJs, appCss, publicFiles])
 
