@@ -52,7 +52,7 @@ var vendor = 'vendor'
 // include app, styles and vendor trees
 var sourceTrees = [app, styles, vendor]
 
-// include tests if in production
+// include tests if not in production
 if (env !== 'production') {
   sourceTrees.push(tests)
 }
