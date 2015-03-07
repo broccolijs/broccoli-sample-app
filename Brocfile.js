@@ -9,7 +9,7 @@ var findBowerTrees = require('broccoli-bower')
 var env = require('broccoli-env').getEnv()
 
 function preprocess (tree) {
-  // filter .hbs and .handlebar files, use the Ember handlebar compiler
+  // filter .hbs and .handlebars files, use the Ember handlebar compiler
   tree = filterTemplates(tree, {
     extensions: ['hbs', 'handlebars'],
     compileFunction: 'Ember.Handlebars.compile'
